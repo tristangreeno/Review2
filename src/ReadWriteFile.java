@@ -58,8 +58,10 @@ public class ReadWriteFile extends Person {
         FileWriter fw = new FileWriter(personsFile.getAbsoluteFile());
         BufferedWriter bw = new BufferedWriter(fw);
 
-        String personJson = js.include("*").serialize(mapOfPersonsAndName);
-        bw.write(personJson);
+        for(String c : countryNames) {
+            String personJson = js.include("*").serialize(mapOfPersonsAndName.get(c));
+            bw.write(personJson);
+        }
 
         System.out.println(mapOfPersonsAndName.toString());
 
